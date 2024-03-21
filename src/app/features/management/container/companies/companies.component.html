@@ -1,0 +1,91 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>EMPRESAS</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/companies">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Empresas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Filter -->
+<div class="job-filter-area pt-100">
+    <div class="container">
+        <form>
+            <div class="row">
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End Filter -->
+
+
+<!-- Filter -->
+<div class="job-filter-area pt-100">
+    <div class="container">
+        <form>
+            <div class="row" >
+                <!--<div class="col-sm-6 col-lg-3">
+                    <button type="submit" class="btn cmn-btn" routerLink="/consolidated-announcement" >Consolidado Anuncios<i class='bx bx-plus'></i></button>
+                </div>-->
+                <div class="col-sm-6 col-lg-6">
+                    <button type="submit" class="btn cmn-btn" routerLink="/pre-approved">Generar Preaprobados<i class='bx bx-plus'></i></button>
+                </div>
+                <!--<div class="col-sm-6 col-lg-4">
+                    <button type="submit" class="btn cmn-btn" routerLink="/consolidated-compensation">Consolidado Compensaciones<i class='bx bx-plus'></i></button>
+                </div>-->
+                <div class="col-sm-6 col-lg-6">
+                    <button type="submit" class="btn cmn-btn" routerLink="/liquidation">Liquidación Compensaciones<i class='bx bx-plus'></i></button>
+                </div>
+            </div>
+        </form>
+        <h4>Total de empresas: {{companiesList.length}}</h4>
+    </div>
+</div>
+<!-- End Filter -->
+
+<!-- Employer -->
+<div class="employer-area two pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div *ngFor='let item of companiesList'>
+                    <div class="employer-item" >
+                        <a (click)="onBrake(item)" routerLink="/announcements">
+                            <h3>{{item.id}}</h3>
+                            <h3>{{item.nameCompany}}</h3>
+                            <h4>NIT: {{item.nit}}</h4>
+                            <ul>
+                                <li><i class="flaticon-send"></i> {{item.city}} {{item.address}}</li>
+                            </ul>
+                            <span class="span-two">{{estadoCompany(item.state)}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Employer -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

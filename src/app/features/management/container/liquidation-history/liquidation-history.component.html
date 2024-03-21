@@ -1,0 +1,144 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>HISTORICO LIQUIDACIÓN</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Historico Liquidación</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+<br>
+<br>
+<!-- Employer -->
+<!-- Employer -->
+<div class="employer-area two pb-100">
+    <div class="container">
+
+        <form [formGroup]="LiquidationHistoryForm" (ngSubmit)="onSubmit()" class="text-center">
+            <div class="row">
+              <div class="col-12 col-lg-6 mx-auto">
+                <div class="form-inline justify-content-center">
+                  <div class="form-group mr-2">
+                    <label>Fecha Inicial:</label>
+                    <input type="date" class="form-control" formControlName="inicialFecha">
+                  </div>
+                  <div class="form-group mr-2">
+                    <label>Fecha Final:</label>
+                    <input type="date" class="form-control" formControlName="finalFecha">
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="background-color: #21a212; margin: 10px;">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          
+      
+            <div class="row" *ngFor="let item of preLiqList.datos">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr  class="highlight">
+                            <th>COMPENSACION OTORGADA No.:</th>
+                            <th>{{ item.id }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>ANUNCIO No:</th>
+                            <td>{{ item.announcementNumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>SOLICITUD DE COMPENSACION No:</th>
+                            <td>{{ item.filingDate | date: 'dd/MM/yyyy' }}</td>
+                        </tr>
+                        <tr>
+                            <th>FECHA RADICACION SOLICITUD COMPENSACION:</th>
+                            <td>{{ item.liquidationDate }}</td>
+                        </tr>
+                        <tr>
+                            <th>FECHA DE LIQUIDACION: </th>
+                            <td>{{ item.liquidationDate }}</td>
+                        </tr>
+                        <tr>
+                            <th>EXPORTADOR:</th>
+                            <td>{{ item.exporter }}</td>
+                        </tr>
+                        <tr>
+                            <th>CONVENIO No.:</th>
+                            <td>{{ item.agreement }}</td>
+                        </tr>
+                        <tr>
+                            <th>PRODUCTO COMPENSADO:</th>
+                            <td>{{ item.productCompensated }}</td>
+                        </tr>
+                        <tr>
+                            <th>PARTIDA ARANCELARIA</th>
+                            <td>{{ item.tariffItem }}</td>
+                        </tr>
+                        <tr>
+                            <th>FECHA EXPORTACION:</th>
+                            <td>{{ item.exporterDate | date: 'dd/MM/yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <th>PAIS:</th>
+                            <td>{{ item.destinationCountry }}</td>
+                        </tr>
+                       
+                        <tr>
+                            <th>MES A COMPENSAR:</th>
+                            <td>{{ item.monthCompensate }}</td>
+                        </tr>
+                        <tr>
+                            <th>KILOS EXPORTADOS:</th>
+                            <td>{{ item.kilogramsExported | number}}</td>
+                        </tr>
+    
+                        <tr>
+                            <th>VALOR COMPENSADO POR KILOGRAMO, DOLARES:</th>
+                            <td>{{ item.offsetKilogram | currency }}</td>
+                        </tr>
+                        <tr>
+                            <th>T.R.M.:</th>
+                            <td>{{ item.trm | currency}}</td>
+                        </tr>
+                        <tr>
+                            <th>VALOR COMPENSADO POR KILOGRAMO, PESOS:</th>
+                            <td>{{ item.offsetValueKilogram | currency}}</td>
+                        </tr>
+                        <tr>
+                            <th>VALOR COMPENSACION OTORGADA:</th>
+                            <td>{{ item.compensationValue | currency }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+</div>
+<!-- Employer -->
+
+
+
+
+
+
+<!-- End Employer -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

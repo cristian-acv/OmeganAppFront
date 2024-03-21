@@ -1,0 +1,14 @@
+.select2{
+    display: block !important;
+}
+
+.text-danger{
+    font-size: 24px; 
+    display: inline-block; 
+    padding: 8px 12px;
+}
+
+.text-danger:hover,
+.text-danger:focus {
+    transform: scale(1.2); /* Aumenta el tamaño en un 10% al seleccionar */
+}

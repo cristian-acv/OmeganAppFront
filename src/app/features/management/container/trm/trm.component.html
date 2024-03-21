@@ -1,0 +1,56 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>TRM</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>TRM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Pricing -->
+<section class="pricing-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-3 col-lg-12">
+                <div class="pricing-item" *ngFor='let item of trm'>
+                    <div class="top">
+                        <h3>TRM: {{item.trmValue}}</h3>
+                        <span>PRESUPUESTO MES: {{item.monthlyBudget}}</span>
+                    </div>
+                    <div class="middle">
+                        <h4>No. EMPRESA INICIAL: {{item.numberCompanies}}</h4>
+                    </div>
+                    <div class="end">
+                        <ul>
+                            <li>DIVISION INICIAL: {{item.initialDivision}}</li>
+                        </ul>
+                        <a class="cmn-btn" (click)="onClickUpdate(item)">Actulizar TRM<i class='bx bx-plus'></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Pricing -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

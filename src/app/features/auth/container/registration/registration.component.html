@@ -1,0 +1,225 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>REGISTRO</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Registro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Dashboard -->
+<div class="dashboard-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="profile-content">
+                            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                                <div class="profile-content-inner">
+                                    <h2>INFORMACION BÁSICA</h2>
+                                    <div formGroupName="company">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Nombre de la empresa</label>
+                                                    <input type="text" formControlName="namecompany"
+                                                        placeholder="Nombre de la empresa" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('company').get('namecompany').errors }">
+                                                    <div *ngIf="submitted && this.registrationForm.get('company').get('namecompany')?.errors?.['required']"
+                                                        class="invalid-feedback">
+                                                        <div>El nombre del la empresa es requerido</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label>NIT</label>
+                                                    <input type="text" formControlName="nit" placeholder="NIT"
+                                                        class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('company').get('nit').errors }">
+                                                    <div *ngIf="submitted && this.registrationForm.get('company').get('nit')?.errors?.['required']"
+                                                        class="invalid-feedback">
+                                                        <div>El NIT es requerido</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Ciudad</label>
+                                                    <input type="text" formControlName="city" class="form-control"
+                                                        placeholder="Ciudad"
+                                                        [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('company').get('city').errors }">
+                                                    <div *ngIf="submitted && this.registrationForm.get('company').get('city')?.errors?.['required']"
+                                                        class="invalid-feedback">
+                                                        <div>La ciudad es requerida</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Dirección</label>
+                                                    <input type="text" formControlName="address" class="form-control"
+                                                        placeholder="Dirección"
+                                                        [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('company').get('address').errors }">
+                                                    <div *ngIf="submitted && this.registrationForm.get('company').get('address')?.errors?.['required']"
+                                                        class="invalid-feedback">
+                                                        <div>La dirección es requerida</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" formGroupName="user">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Nombre del representante legal</label>
+                                                <input type="text" formControlName="fullname" class="form-control"
+                                                    placeholder="Nombre representante legal"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('user').get('fullname').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('user').get('fullname')?.errors"
+                                                    class="invalid-feedback">
+                                                    <div
+                                                        *ngIf="this.registrationForm.get('user').get('fullname')?.errors?.['required']">
+                                                        El nombre del representante legal requerido</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Correo de contacto</label>
+                                                <input type="email" formControlName="email" class="form-control"
+                                                    placeholder="Correo de contacto"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('user').get('email').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('user').get('email')?.errors"
+                                                    class="invalid-feedback">
+                                                    <div
+                                                        *ngIf="this.registrationForm.get('user').get('email')?.errors?.['required']">
+                                                        Correo electrónico
+                                                        es requerido</div>
+                                                    <div
+                                                        *ngIf="this.registrationForm.get('user').get('email')?.errors?.['pattern']">
+                                                        Correo electrónico
+                                                        invalido</div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Teléfono de contacto</label>
+                                                <input type="text" formControlName="phonenumber" class="form-control"
+                                                    placeholder="Teléfono de contacto"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('user').get('phonenumber').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('user').get('phonenumber')?.errors"
+                                                    class="invalid-feedback">
+                                                    <div
+                                                        *ngIf="this.registrationForm.get('user').get('phonenumber')?.errors?.['required']">
+                                                        El Teléfono
+                                                        es requerido</div>
+                                                    <!--<div
+                                                        *ngIf="this.registrationForm.get('user').get('phonenumber')?.errors?.['pattern']">
+                                                        El Teléfono es invalido</div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="profile-content-inner">
+                                    <h2>DOCUMENTOS OBLIGATORIOS</h2>
+
+                                    <div class="row" formGroupName="archives">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Cámara de Comercio especificando calidad de exportador de carne
+                                                    y/o leche</label>
+                                                <input (change)="captureFile($event)" type="file"
+                                                    formControlName="chambercommerce" accept="application/pdf"
+                                                    name="chambercommerce"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('archives').get('chambercommerce').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('archives').get('chambercommerce')?.errors?.['required']"
+                                                    class="invalid-feedback">
+                                                    <div>El archivo es requerido</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Documento de identidad representante legal</label>
+                                                <input (change)="captureFile($event)" type="file"
+                                                    formControlName="identitydocument" accept="application/pdf"
+                                                    name="identitydocument"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('archives').get('identitydocument').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('archives').get('identitydocument')?.errors?.['required']"
+                                                    class="invalid-feedback">
+                                                    <div>El archivo es requerido</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Carta de intención de firma del convenio</label>
+                                                <input (change)="captureFile($event)" type="file"
+                                                    formControlName="signagreement" accept="application/pdf"
+                                                    name="signagreement"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('archives').get('signagreement').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('archives').get('signagreement')?.errors?.['required']"
+                                                    class="invalid-feedback">
+                                                    <div>El archivo es requerido</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Carta de responsable del manejo del Programa</label>
+                                                <input (change)="captureFile($event)" type="file"
+                                                    formControlName="responsiblemanaging" accept="application/pdf"
+                                                    name="responsiblemanaging"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.registrationForm.get('archives').get('responsiblemanaging').errors }">
+                                                <div *ngIf="submitted && this.registrationForm.get('archives').get('responsiblemanaging')?.errors?.['required']"
+                                                    class="invalid-feedback">
+                                                    <div>El archivo es requerido</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn dashboard-btn">Realizar Registro</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Dashboard -->

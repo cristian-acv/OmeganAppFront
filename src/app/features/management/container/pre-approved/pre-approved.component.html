@@ -1,0 +1,69 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>DISTRIBUCIÓN DE COMPENSACIONES POR EXPORTACIONES DE CARNE DE BOVINO</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>PreAprobado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<br>
+<br>
+<!-- Employer -->
+<div class="employer-area two pb-100">
+    <div class="container" >
+        <div >
+            <button (click)="aprobarPreavado()">APROBAR PREAPROBADO</button>
+            <button (click)="generateExcel()">GENERAR REPORTE</button>
+            <button (click)="preaprovadoHistory()">HISTORICO PREAPROBADO</button>
+        </div>
+    
+     
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">EMPRESA</th>
+                    <th scope="col">COMP SOlICITADA</th>
+                    <th scope="col">1.ROUND</th>
+                    <th scope="col">2.ROUND</th>
+                    <th scope="col">FINAL</th>
+                    <th scope="col">%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderList">
+                        <td>{{item.company}}</td>
+                        <td>{{item.compesation | currency}}</td>
+                        <td>{{item.oneRound | currency}}</td>
+                        <td>{{item.twoRound | currency}}</td>
+                        <td>{{item.final | currency}}</td>
+                        <td>{{item.percent}}</td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- End Employer -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

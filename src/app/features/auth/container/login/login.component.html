@@ -1,0 +1,58 @@
+<!-- Login -->
+<div class="user-form-area">
+    <div class="container-fluid p-0">
+        <div class="row m-0 align-items-center">
+            <div class="col-lg-6 p-0 col-md-12">
+                <div class="user-img">
+                    <img src="assets/img/resgister-bg.jpg" alt="User">
+                </div>
+            </div>
+
+            <div class="col-lg-6 p-0 col-md-12">
+                <div class="user-content">
+                    <div class="top">
+                        <h2>OMEGAN</h2>
+
+                        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="email" formControlName="email" class="form-control"
+                                    placeholder="Correo electrónico"
+                                    [ngClass]="{ 'is-invalid': submitted && myForm['email'].errors }">
+                                    <div *ngIf="submitted && myForm['email'].errors" class="invalid-feedback">
+                                        <div *ngIf="myForm['email'].errors['required']">Correo electrónico es requerido</div>
+                                        <div *ngIf="myForm['email'].errors['pattern']">Correo electrónico invalido</div>
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" formControlName="password" class="form-control" placeholder="Contraseña"
+                                [ngClass]="{ 'is-invalid': submitted && myForm['password'].errors }">
+                                    <div *ngIf="submitted && myForm['password'].errors" class="invalid-feedback">
+                                        <div *ngIf="myForm['password'].errors['required']">Contraseña es requerida</div>
+                                        <div *ngIf="myForm['password'].errors['required']">Contraseña debe ser mayor 8</div>
+                                        <div *ngIf="myForm['password'].errors['pattern']">Contraseña debe tener al menos 8 caracteres, incluyendo letras mayúsculas, minúsculas, números y caracteres especiales.</div>
+                                    </div>
+                            </div>
+
+                            <button type="submit" class="btn">INICIAR SESIÓN</button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="about-content">
+                            <a class="cmn-btn" routerLink="/register">CREAR CUENTA NUEVA<i
+                                    class='bx bx-plus'></i></a>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <ul>
+                            <a routerLink="/recover">Olvido de contraseña</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Login -->

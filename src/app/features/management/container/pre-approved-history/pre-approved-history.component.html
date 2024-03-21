@@ -1,0 +1,91 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>HISTORICO PREAPROBADO</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Historico PreAprobados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+<br>
+<br>
+<!-- Employer -->
+<!-- Employer -->
+<div class="employer-area two pb-100">
+    <div class="container">
+
+        <form [formGroup]="preApprovedHistoryForm" (ngSubmit)="onSubmit()" class="text-center">
+            <div class="row">
+              <div class="col-12 col-lg-6 mx-auto">
+                <div class="form-inline justify-content-center">
+                  <div class="form-group mr-2">
+                    <label>Fecha Inicial:</label>
+                    <input type="date" class="form-control" formControlName="inicialFecha">
+                  </div>
+                  <div class="form-group mr-2">
+                    <label>Fecha Final:</label>
+                    <input type="date" class="form-control" formControlName="finalFecha">
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="background-color: #21a212; margin: 10px;">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          
+          
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">EMPRESA</th>
+                        <th scope="col">COMP SOLICITADA</th>
+                        <th scope="col">1.ROUND</th>
+                        <th scope="col">2.ROUND</th>
+                        <th scope="col">FINAL</th>
+                        <th scope="col">%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let arrayItem of myArray; let i = index">
+                        <tr *ngFor="let item of arrayItem">
+                            <td>{{ item.company }}</td>
+                            <td>{{ item.compesation | currency }}</td>
+                            <td>{{ item.oneRound | currency }}</td>
+                            <td>{{ item.twoRound | currency }}</td>
+                            <td>{{ item.final | currency }}</td>
+                            <td>{{ item.percent }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Employer -->
+
+
+
+
+
+
+<!-- End Employer -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

@@ -1,0 +1,303 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>COMPENSACIÓN</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>COMPENSACIÓN</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Dashboard -->
+<div class="dashboard-area ptb-100">
+    <div class="container">
+        <form [formGroup]="announcementDetailForm">
+
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                            aria-labelledby="v-pills-home-tab">
+                            <div class="profile-content">
+                                <div class="profile-content-inner">
+                                    <h3>PRODUCTOS</h3>
+                                    <ng-container>
+
+                                        <ng-container *ngFor="let producForm of detalle.productsList;">
+                                            <div [formGroup]="producForm">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Partida arancelaria</label>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                    [readonly]="true" value="{{producForm.tariffItem}}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Descripción del producto</label>
+                                                            <input type="text" class="form-control" [readonly]="true"
+                                                                value="{{producForm.description}}">
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="col-lg-2 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Kilogramos</label>
+                                                            <input type="text" class="form-control" [readonly]="true"
+                                                                value="{{producForm.kilogram}}">
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="col-lg-3 col-md-12">
+                                                        <div class="form-group">
+                                                            <label title="Total compensación (COP)">Total compensación</label>
+                                                            <input type="text" class="form-control" [readonly]="true"
+                                                                value="{{producForm.subtotal | currency}}">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>SubTotal</label>
+                                                            <input type="text" class="form-control" [readonly]="true"
+                                                                value="{{  producForm.subTotal2  | currency }}">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                    </ng-container>
+
+                                </div>
+
+                                <div class="profile-content-inner">
+                                    <h3>INFORMACIÓN DEL EMBARQUE O DESPACHO</h3>
+
+                                    <div class="row">
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group"> <label>País de destino</label>
+                                                <input type="text" class="form-control" [readonly]="true"
+                                                    value="{{detalle.destinationCountry}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Fecha de embarque</label>
+                                                <input type="text" class="form-control" [readonly]="true"
+                                                    value="{{detalle.exporterDate | date: 'dd/MM/yyyy'}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Formato de solicitud de compesación firmado</label>
+                                                <button type="text" class="form-control"
+                                                    (click)="onClickDownloadPdf2(detalle.signatureRepresentative , 'Firma del Representante Legal')">
+                                                    Descargar Firma </button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label title="Certtificaciones revisor fiscal producto origen nacional y pago cuota fomento">Certificaciones revisor fiscal producto origen</label>
+                                                <button type="text" class="form-control"
+                                                    (click)="onClickDownloadPdf2(detalle.signatureAuditor, 'Firma del Revisor Fiscal o Contador')">Descargar
+                                                    Firma</button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12" *ngIf="archivosVisible">
+                    <div class="job-area-list ptb-100">
+                        <div class="job-list-right">
+                            <div class="job">
+                                <div class="form-group" style="display: block; font-weight: bold;">
+                                    <h3>Cargue soportes de exportación </h3>
+                                    <div style="padding: 10px; ">
+                                        <label style="display: block;">Poliza cumplimiento</label>
+                                        <input type="file" (change)="captureFile2($event)" accept="application/pdf">
+                                    </div>
+                                    <div style="padding: 10px;">
+                                        <label style="display: block;">DEX</label>
+                                        <input type="file" (change)="captureFile2($event)" accept="application/pdf">
+                                    </div>
+                                    <div style="padding: 10px;">
+                                        <label style="display: block;">BL</label>
+                                        <input type="file" (change)="captureFile2($event)" accept="application/pdf">
+                                    </div>
+                                    <div style="padding: 10px;">
+                                        <label style="display: block;">Factura</label>
+                                        <input type="file" (change)="captureFile2($event)" accept="application/pdf">
+                                    </div>
+                                    <div style="padding: 10px;">
+                                        <label style="display: block;">Cert. producto de origen animal</label>
+                                        <input type="file" (change)="captureFile2($event)" accept="application/pdf">
+                                    </div>
+                                    <div style="padding: 10px;">
+                                        <label style="display: block;">Cert. pago cuota de fomento</label>
+                                        <input type="file" (change)="captureFile2($event)" accept="application/pdf">
+                                    </div>
+                                    <form>
+                                        <button class="btn" (click)="onCaptureExportacion()">SUBIR ARCHIVOS</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+
+                    <div *ngIf="archivosVisibleAuditoria">
+                        <div class="job-area-list ptb-100" style="padding-top:10px; padding-bottom:10px">
+                            <div class="job-list-right">
+                                <div class="job">
+                                    <div class="form-group" style="display: block; font-weight: bold;">
+                                        <h3>Cargue de documento revisión auditoria y CDP</h3>
+                                        <div style="padding: 10px; ">
+                                            <label style="display: block;">Revisión auditoria</label>
+                                            <input type="file" (change)="captureFile3($event)" accept="application/pdf">
+                                        </div>
+                                        <div style="padding: 10px; ">
+                                            <label style="display: block;">CDP</label>
+                                            <input type="file" (change)="captureFile3($event)" accept="application/pdf">
+                                        </div>
+                                        <form>
+                                            <button class="btn" (click)="onCaptureExportacion()">SUBIR ARCHIVOS</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="archivosVisiblePazSalvo">
+                        <div class="job-area-list ptb-100" style="padding-top:10px; padding-bottom:10px">
+                            <div class="job-list-right">
+                                <div class="job">
+                                    <div class="form-group" style="display: block; font-weight: bold;">
+                                        <h3>Cargue de documento Paz y Salvo </h3>
+                                        <div style="padding: 10px; ">
+                                            <label style="display: block;">Paz y Salvo</label>
+                                            <input type="file" (change)="captureFile4($event)" accept="application/pdf">
+                                        </div>
+                                        <form>
+                                            <button class="btn" (click)="onCaptureExportacion()">SUBIR ARCHIVOS</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="archivosVisibleComprobantePago">
+                        <div class="job-area-list ptb-100" style="padding-top:10px; padding-bottom:10px">
+                            <div class="job-list-right">
+                                <div class="job">
+                                    <div class="form-group" style="display: block; font-weight: bold;">
+                                        <h3>Cargue de documento Comprobante de pago</h3>
+                                        <div style="padding: 10px; ">
+                                            <label style="display: block;">Comprobante de pago</label>
+                                            <input type="file" (change)="captureFile5($event)" accept="application/pdf">
+                                        </div>
+                                        <form>
+                                            <button class="btn" (click)="onCaptureExportacion()">SUBIR ARCHIVOS</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="archivosObligatorios">
+                        <div class="widget-area">
+                            <div class="information widget-item">
+                                <h3>Archivos Obligatorios</h3>
+
+                                <ul *ngFor='let item of archivesList'>
+                                    <li (click)="onClickDownloadPdf(item)" *ngIf="archivesList.length > 0">
+                                        <img src="assets/img/documento.png" alt="Details">
+                                        <h4>{{item.name}}</h4>
+                                        <br>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+                <div class="col-lg-8 col-md-12" style="margin-top: 5px;">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                            aria-labelledby="v-pills-home-tab">
+                            <div class="profile-content">
+                                <div class="row">
+                                    <div class="col text-center" *ngIf="buttonAprobarVisible">
+                                        <button type="button" class="btn btn-success btn-sm"
+                                            (click)="aprobarAnuncio()">Aprobar Compensación</button>
+                                    </div>
+                                    <div class="col text-center" *ngIf="buttonRechazarArchivosVisible">
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            (click)="onClickRechazarArchivos()">Rechazar archivos</button>
+                                    </div>
+                                    <div class="col text-center" *ngIf="buttonCancelarVisible">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            (click)="onClickDelete()">Cancelar Compensación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> 
+
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End Dashboard -->
+
+<!-- Footer --><app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

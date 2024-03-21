@@ -1,0 +1,108 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>CONSOLIDADO DE ANUNCIOS APROBADOS</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Consolidado de anuncios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<br>
+<br>
+<!-- Employer -->
+<div class="employer-area two pb-100">
+    <div class="container">
+      <button>GENERAR REPORTE</button>
+      <br>
+        <!--<div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">ID EMPRESA</th>
+                    <th scope="col">EMPRESA</th>
+                    <th scope="col">NÚMERO ANUNCIO</th>
+                    <th scope="col">PUERTO</th>
+                    <th scope="col">OBSERVACIÓN</th>
+                    <th scope="col">VALOR TRM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of companyList">
+                        <td>{{item.id}}</td>
+                        <td>{{item.nameCompany}}</td>
+                        <td>{{item.announcements[0].id}}</td>
+                        <td>{{item.announcements[0].portShipment}}</td>
+                        <td>{{item.announcements[0].observation}}</td>
+                        <td>{{item.announcements[0].trm.trmValue}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>-->
+    <div class="row">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombre de la Empresa</th>
+            <!--<th>NIT</th>-->
+            <!--<th>Ciudad</th>-->
+            <!--<th>Dirección</th>-->
+            <!--<th>Estado</th>-->
+            <th>Anuncios</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let company of companyList">
+                <td>{{ company.id }}</td>
+                <td>{{ company.nameCompany }}</td>
+                <!--<td>{{ company.nit }}</td>-->
+                <!--<td>{{ company.city }}</td>-->
+                <!--<td>{{ company.address }}</td>-->
+                <!--<td>{{ company.state }}</td>-->
+                <td>
+                    <ul>
+                        <li *ngFor="let announcement of company.announcements">
+                        <p>Puerto: {{ announcement.portShipment }}</p>
+                        <p>Fecha de envio: {{ announcement.shippingDate }}</p>
+                        <p>Valor TRM: {{ announcement.trm.trmValue}}</p>
+                        <ul>
+                            <li *ngFor="let product of announcement.productsList">
+                            <p>Partida arancelaria: {{ product.tariffItem }}</p>
+                            <p>Descripción: {{ product.description }}</p>
+                            <p>Kilogramos: {{ product.kilogram }}</p>
+                            <!--<p>Offset Kilogram: {{ product.offsetKilogram }}</p>
+                            <p>Subtotal: {{ product.subtotal }}</p>-->
+                            </li>
+                        </ul>
+                        </li>
+                    </ul>
+                </td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+    
+</div>
+<!-- End Employer -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

@@ -1,0 +1,201 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>ANUNCIO SOBRE VENTAS PARA
+                        CALIFICAR A COMPENSACIONES
+                        DE ESTABILIZACIÓN</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Publicacion De Anuncio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Dashboard -->
+<div class="dashboard-area ptb-100">
+    <div class="container">
+        <form [formGroup]="announcementForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-8">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                            aria-labelledby="v-pills-home-tab">
+                            <div class="profile-content">
+                                <div class="profile-content-inner">
+                                    <h3>PRODUCTOS</h3>
+                                    <ng-container formArrayName="productsAnnouncement">
+
+                                        <ng-container *ngFor="let producForm of products.controls; let i = index">
+                                            <div [formGroup]="producForm">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Partida arancelaria</label>
+                                                            <div class="form-group">
+                                                                <select id="{{i}}" formControlName="tariffitem"
+                                                                    class="select2"
+                                                                    (change)="onChange(i,$event.target.value)"
+                                                                    style="display: block !important">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Descripción del producto</label>
+                                                            <input type="text" class="form-control" [readonly]="true"
+                                                                formControlName="description"
+                                                                [ngClass]="{ 'is-invalid': submitted && producForm.get('description')?.errors }">
+                                                            <div *ngIf="submitted && producForm.get('description')?.errors"
+                                                                class="invalid-feedback">
+                                                                <div
+                                                                    *ngIf="producForm.get('description')?.errors?.['required']">
+                                                                    La descripción es requerido
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Kilogramos</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="kilogram"
+                                                                [ngClass]="{ 'is-invalid': submitted && producForm.get('kilogram')?.errors }">
+                                                            <div *ngIf="submitted && producForm.get('kilogram')?.errors"
+                                                                class="invalid-feedback">
+                                                                <div
+                                                                    *ngIf="producForm.get('kilogram')?.errors?.['required']">
+                                                                    Los kilogramos son requerido
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-lg-1 col-md-12">
+                                                        <div class="form-group text-center">
+                                                            <label>Eliminar</label>
+                                                            <a class="text-danger" (click)="eliminarItem(i)" >
+                                                                <i class='bx bx-no-entry' style="font-size: 48px;"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+
+                                    </ng-container>
+                                    <div class="form-group">
+                                        <button (click)="addProduct()" class="btn dashboard-btn">Agregar</button>
+                                    </div>
+                                </div>
+
+                                <div class="profile-content-inner">
+                                    <h3>INFORMACIÓN DEL EMBARQUE O DESPACHO</h3>
+
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Puerto de embarque o despacho</label>
+                                                <input type="text" class="form-control" formControlName="portshipment"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.announcementForm.get('portshipment').errors }">
+                                                <div *ngIf="submitted && this.announcementForm.get('portshipment')?.errors"
+                                                    class="invalid-feedback">
+                                                    <div
+                                                        *ngIf="this.announcementForm.get('portshipment')?.errors?.['required']">
+                                                        El puerto de embarque es requerido
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>País de destino</label>
+                                                <select class="select2" id="my-select"
+                                                    formControlName="idDestinationCountry"
+                                                    style="display: block !important">
+                                                </select>                                   
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Fecha estimada del embarque o despacho</label>
+                                                <input type="date" class="form-control" formControlName="shippingdate"
+                                                    [min]="minDateFormat" [max]="maxDateFormat"
+                                                    [ngClass]="{ 'is-invalid': submitted && this.announcementForm.get('shippingdate').errors }">
+                                                <div *ngIf="submitted && this.announcementForm.get('shippingdate')?.errors"
+                                                    class="invalid-feedback">
+                                                    <div
+                                                        *ngIf="this.announcementForm.get('shippingdate')?.errors?.['required']">
+                                                        La fecha es requerida</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="profile-content-inner">
+                                    <h3>OBSERVACIONES</h3>
+                                    <div class="form-group">
+                                        <label>Observación</label>
+                                        <textarea name="message" class="form-control" id="message" cols="30" rows="8"
+                                            required formControlName="observation"
+                                            [ngClass]="{ 'is-invalid': submitted && this.announcementForm.get('observation').errors }"></textarea>
+                                        <div *ngIf="submitted && this.announcementForm.get('observation')?.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="this.announcementForm.get('observation')?.errors?.['required']">
+                                                La observación es requerida</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button (click)="dos()" type="submit" (click)="dos()"
+                                        class="btn dashboard-btn">Crear Anuncio</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+             
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+<!-- End Dashboard -->
+
+<!-- Footer --><app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

@@ -1,0 +1,127 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>LIQUIDACION DE LAS COMPESACIONES</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Liquidacion de la compesaciones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<br>
+<br>
+<!-- Employer -->
+<div class="employer-area two pb-100" >
+    <div class="container">
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button (click)="aprobarLiquidacion()">APROBAR LIQUIDACIÓN</button>
+        <button (click)="generateExcel()">GENERAR REPORTE</button>
+        <button (click)="LiquidationHistory()">HISTORICO LIQUIDACIÓN</button>
+        <br>
+        <br>
+        <div class="row" *ngFor="let item of productList">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr  class="highlight">
+                        <th>COMPENSACION OTORGADA No.</th>
+                        <th>{{ item.id }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>ANUNCIO No.</th>
+                        <td>{{ item.announcementNumber }}</td>
+                    </tr>
+                    <tr>
+                        <th>SOLICITUD DE COMPENSACION No</th>
+                        <td>{{ item.filingDate | date: 'dd/MM/yyyy' }}</td>
+                    </tr>
+                    <tr>
+                        <th>FECHA RADICACION SOLICITUD COMPENSACION</th>
+                        <td>{{ item.liquidationDate  }}</td>
+                    </tr>
+                    <tr>
+                        <th>FECHA DE LIQUIDACION</th>
+                        <td>{{ item.liquidationDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>EXPORTADOR</th>
+                        <td>{{ item.exporter }}</td>
+                    </tr>
+                    <tr>
+                        <th>CONVENIO No.</th>
+                        <td>{{ item.agreement }}</td>
+                    </tr>
+                    <tr>
+                        <th>PRODUCTO COMPENSADO:</th>
+                        <td>{{ item.productCompensated }}</td>
+                    </tr>
+                    <tr>
+                        <th>PARTIDA ARANCELARIA</th>
+                        <td>{{ item.tariffItem }}</td>
+                    </tr>
+                    <tr>
+                        <th>FECHA EXPORTACION</th>
+                        <td>{{ item.exporterDate | date: 'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <th>PAIS:</th>
+                        <td>{{ item.destinationCountry }}</td>
+                    </tr>
+                   
+                    <tr>
+                        <th>MES A COMPENSAR</th>
+                        <td>{{ item.monthCompensate }}</td>
+                    </tr>
+                    <tr>
+                        <th>KILOGRAMOS A EXPORTAR</th>
+                        <td>{{ item.kilogramsExported | number}}</td>
+                    </tr>           
+                    <tr>
+                        <th>T.R.M.:</th>
+                        <td>{{ item.trm | currency}}</td>
+                    </tr>
+                    <tr>
+                        <th>VALOR COMPENSADO POR KILOGRAMO, PESOS</th>
+                        <td>{{ item.offsetValueKilogram | currency}}</td>
+                    </tr>
+                    <tr>
+                        <th>VALOR COMPENSACION OTORGADA</th>
+                        <td>{{ item.compensationValue | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<!-- End Employer -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

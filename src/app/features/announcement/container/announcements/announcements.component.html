@@ -1,0 +1,110 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>Anuncios</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Anuncios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Jobs -->
+<div class="job-area-list ptb-100">
+    <div class="container">
+        <form [formGroup]="announcementForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <ul class="job-list-item align-items-center">
+                        <li>
+                            <a href="#">Resultados encontrados: <span>{{announcementList.length}}</span></a>
+                        </li>
+                    </ul>
+
+                    <div *ngFor='let item of announcementList'>
+                        <div class="employer-item">
+                            <a (click)="onClickDetalle(item)" routerLink="/announcement-detail">
+                                <img src="assets/img/home-one/job1.png" alt="Employer">
+                                <h3>{{item.id}}</h3>
+                                <h3>{{item.portShipment}}</h3>
+                                <ul>
+                                    <li><i class="flaticon-send"></i>{{item.destinationCountry}}</li>
+                                    <li>{{item.shippingDate | date: 'dd/MM/yyyy'}}</li>
+                                </ul>
+                                <p>{{item.observation}}</p>
+                                <span *ngIf="item.state == 0" class="span-two four">{{stateAnnuncement(item.state)}}</span>
+                                <span *ngIf="item.state == 1" class="span-two two">{{stateAnnuncement(item.state)}}</span>
+                                <span *ngIf="item.state == 2" class="span-two five">{{stateAnnuncement(item.state)}}</span>
+                                <span *ngIf="item.state == 3" class="span-two three">{{stateAnnuncement(item.state)}}</span>
+                                <span *ngIf="item.state == 9" class="span-two">{{stateAnnuncement(item.state)}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="job-list-right">
+                        <div class="job" [hidden]="anuncioVisible">
+                            <h3>Crear Anuncio</h3>
+                            <form>
+                                <button class="btn" (click)="onAnuncio()">Ir</button>
+                            </form>
+                        </div>
+
+                        <div class="job">
+                            <h3>Información Empresa</h3>
+                            <form>
+                                <button class="btn" (click)="onCompayDetail()">Ir</button>
+                            </form>
+                        </div>
+
+                        <div class="job" [hidden]="cambioContrasenaVisible">
+                            <h3>Perfil</h3>
+                            <form>
+                                <a  routerLink="/change" class="btn">Cambiar contraseña</a>
+                            </form>
+                        </div>
+
+
+                        <div class="job" [hidden]="certificadoVisible">
+                            <div class="form-group" >
+                                <label>Certificación del revisor fiscal de que se encuentra al día con el pago de la CFGL</label>
+                                <input type="file" (change)="captureFile($event)" accept="application/pdf">
+                            </div>
+                        </div>
+                       
+                        <div class="job" [hidden]="anuncioFormato">
+                            <div class="form-group" >
+                                <label>Formato Convenio De Estabilización</label>
+                                <input type="file" (change)="captureFile($event)" accept="application/pdf">
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- End Jobs -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->

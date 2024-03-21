@@ -1,0 +1,110 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area two three">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="left two">
+                            <h2>{{companyDetail.nameCompany}}</h2>
+                            <ul>
+                                <li><i class='bx bx-box'></i>NIT: {{companyDetail.nit}}</li>
+                                <li><i class='bx bx-box'></i>Ciudad: {{companyDetail.city}}</li>
+                                <li><i class='bx bx-box'></i>Dirección: {{companyDetail.address}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+
+<!-- Candidate Details -->
+<div class="person-details-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="details-item">
+                    <div class="profile">
+                        <h3>Información Representante Legal</h3>
+                        <ul>
+                            <li><span>Nombre: {{user.fullName}}</span></li>
+                            <li><span>Correo Electronico: {{user.email}}</span></li>
+                            <li><span>Telefono: {{user.phoneNumber}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="review" *ngIf="Visible">
+                        <h3>En caso de que la empresa sea rechazada</h3>
+                        <form [formGroup]="rejectCompanyForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <i class='bx bx-user'></i>
+                                        <input type="text" class="form-control" [(ngModel)]="user.fullName"
+                                            placeholder="Nombre*" formControlName="name" readonly="true">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <i class='bx bx-mail-send'></i>
+                                        <input type="email" class="form-control" [(ngModel)]="user.email"
+                                            placeholder="correo*" formControlName="to" readonly="true">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <i class='bx bx-mail-send'></i>
+                                        <textarea id="your-message" rows="10" class="form-control"
+                                            placeholder="Escribir Mensaje" formControlName="emailBody"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="btn">Enviar correo</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="widget-area">
+                    <div class="information widget-item">
+                        <h3>Archivos Obligatorios</h3>
+                        <div *ngFor="let group of ['1', '2', '3', '4']">
+                            <ng-container *ngIf="archivesByGroup[group]?.length">
+                                <h2>{{getGroupName(group)}}</h2>
+                                <ul>
+                                    <li *ngFor="let archive of archivesByGroup[group]"
+                                        (click)="onClickDownloadPdf(archive)">
+                                        <img src="assets/img/documento.png" alt="Details">
+                                        {{ archive.name }}
+                                    </li>
+                                </ul>                
+                            </ng-container> 
+                       </div>
+                    </div>
+<br>
+                    <div class="download widget-item" *ngIf="Visible">
+                        <a (click)="UpdateCompany()">APROBAR EMPRESA</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- End Candidate Details -->
+
+    <!-- Footer -->
+    <app-footer-style-two></app-footer-style-two>
+    <!-- End Footer -->

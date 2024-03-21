@@ -1,0 +1,60 @@
+<!-- Navbar -->
+<app-navbar-style-three></app-navbar-style-three>
+<!-- End Navbar -->
+
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>Valores Vigentes Paises</h2>
+                    <ul>
+                        <li>
+                            <img src="assets/img/home-three/title-img-two.png" alt="Image">
+                            <!--<a routerLink="/">Inicio</a>-->
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Valores Vigentes Paises</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+<!-- Pricing -->
+<section class="pricing-area pt-100 pb-70">
+    <div class="container">
+        <div style="margin-bottom: 30px; align-content: flex-end;">
+            <button type="button" class="btn btn-success" (click)="onClickAdd()">AGREGAR NUEVO PAÍS</button>
+        </div>
+        <div class="row">
+            <!-- Repite los elementos en columnas -->
+            <div class="col-sm-6 col-lg-4" *ngFor='let item of citiesList'>
+                <div class="pricing-item">
+                    <div class="top">
+                        <h5>PAIS</h5>
+                        <h3>{{item.nameCountry}}</h3>
+                    </div>
+                    <div class="middle">
+                        <span>VALOR VIGENTE</span>
+                        <h4><span class="span-left">$</span> {{item.currentValue}}<span class="span-right"></span></h4>
+                    </div>
+                    <div class="end">
+                        <a class="cmn-btn" (click)="onClickUpdate(item)">Editar Valor<i class='bx bx-plus'></i></a>
+                        <br>
+                        <br>
+                        <a class="cmn-btn-del" (click)="onClickDelete(item)">Eliminar Pais<i class='bx bx-plus'></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Pricing -->
+
+<!-- Footer -->
+<app-footer-style-two></app-footer-style-two>
+<!-- End Footer -->
